@@ -1,3 +1,8 @@
 enum FieldTypes{
-    TextBox, EMail, Select, CheckBox, TextArea, Date
+    TextBox = 'texbox',
+    EMail = 'email',
+    Select = 'select',
+    CheckBox = 'checkbox',
+    TextArea = 'textarea',
+    Date = 'date'
 }

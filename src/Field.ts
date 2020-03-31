@@ -4,5 +4,5 @@ interface Field {
     fieldType: FieldTypes;
     value: string;
 
-    render(l:string, f: FieldTypes): void; 
+    render(): void; 
 }
