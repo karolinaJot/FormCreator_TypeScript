@@ -1,3 +1,6 @@
+import { FieldTypes } from './FieldType';
+import { Field } from './Field';
+
 class DateField implements Field{
     name: string;
     label: string;

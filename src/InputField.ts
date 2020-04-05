@@ -1,5 +1,6 @@
 import { FieldLabel } from './FiledLabel';
 import { FieldTypes } from './FieldType';
+import { Field } from './Field';
 
 // class FieldLabel{
 //     label: string;
