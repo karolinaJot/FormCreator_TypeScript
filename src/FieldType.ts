@@ -1,4 +1,4 @@
-enum FieldTypes{
+export enum FieldTypes {
     TextBox = 'texbox',
     EMail = 'email',
     Select = 'select',

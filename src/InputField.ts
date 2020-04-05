@@ -1,4 +1,5 @@
 import { FieldLabel } from './FiledLabel';
+import { FieldTypes } from './FieldType';
 
 // class FieldLabel{
 //     label: string;
@@ -11,10 +12,10 @@ import { FieldLabel } from './FiledLabel';
 //     }
 // }
 
-class InputField implements Field{
+export class InputField implements Field {
     name: string;
     label: string;
-    fieldType: FieldTypes = FieldTypes.TextBox ;
+    fieldType: FieldTypes = FieldTypes.TextBox;
     value: string;
     render(el: HTMLElement): void {
         let newDiv = document.createElement('div');
@@ -26,16 +27,10 @@ class InputField implements Field{
         newDiv.appendChild(newLabel);
         newDiv.appendChild(newInput);
         el.appendChild(newDiv);
-        
+
     }
 
 }
-
-let form = document.querySelector('form');
-
-let inputTest = new InputField();
-inputTest.label = 'Etykieta testowa1'
-inputTest.render(form);
 
 // let firstQuestionLabel = document.getElementById('first-question-label');
 // let testDiv = document.getElementById('test');
