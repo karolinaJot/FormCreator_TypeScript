@@ -1,5 +1,16 @@
 import { FieldLabel } from './FiledLabel';
 
+// class FieldLabel{
+//     label: string;
+//     constructor(l: string) {
+//         this.label =  l;
+//     }
+
+//     showLabel(el: HTMLElement): void{
+//         el.innerHTML = this.label;
+//     }
+// }
+
 class InputField implements Field{
     name: string;
     label: string;
