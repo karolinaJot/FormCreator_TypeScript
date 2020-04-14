@@ -8,14 +8,16 @@ class InputField {
     }
     render(el) {
         let newDiv = document.createElement('div');
-        let newLabel = document.createElement('label');
         let newInput = document.createElement('input');
         let label1 = new FiledLabel_1.FieldLabel(this.label);
-        label1.showLabel(newLabel);
-        newDiv.appendChild(newLabel);
+        label1.showLabel(newDiv);
         newDiv.appendChild(newInput);
         el.appendChild(newDiv);
     }
 }
 exports.InputField = InputField;
+let testDiv = document.getElementById('test');
+let testField = new InputField();
+testField.label = 'Etykieta testowa 123';
+testField.render(testDiv);
 //# sourceMappingURL=InputField.js.map

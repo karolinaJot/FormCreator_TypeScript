@@ -2,16 +2,6 @@ import { FieldLabel } from './FiledLabel';
 import { FieldTypes } from './FieldType';
 import { Field } from './Field';
 
-// class FieldLabel{
-//     label: string;
-//     constructor(l: string) {
-//         this.label =  l;
-//     }
-
-//     showLabel(el: HTMLElement): void{
-//         el.innerHTML = this.label;
-//     }
-// }
 
 export class InputField implements Field {
     name: string;
@@ -20,6 +10,7 @@ export class InputField implements Field {
     value: string;
     render(el: HTMLElement): void {
         let newDiv = document.createElement('div');
+        newDiv.classList.add('form-box');
         let newLabel = document.createElement('label');
         let newInput = document.createElement('input');
 
@@ -33,12 +24,13 @@ export class InputField implements Field {
 
 }
 
-// let firstQuestionLabel = document.getElementById('first-question-label');
 // let testDiv = document.getElementById('test');
-// console.log(typeof(testDiv));
-// let inputTest = new InputField;
-// inputTest.label = firstQuestionLabel.innerHTML;
-// inputTest.render(testDiv);
+// let testField = new InputField();
+// testField.label = 'Etykieta testowa 123'
+// testField.render(testDiv);
+
+
+
 
 
 

@@ -4,7 +4,8 @@ export class FieldLabel{
         this.label =  l;
     }
 
-    showLabel(el: HTMLElement): void{
-        el.innerHTML = this.label;
+    showLabel(labelEl: HTMLElement): void{
+        labelEl.innerHTML = this.label;
+
     }
 }
