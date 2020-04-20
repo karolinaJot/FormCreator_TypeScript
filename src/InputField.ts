@@ -12,22 +12,28 @@ export class InputField implements Field {
         let newDiv = document.createElement('div');
         newDiv.classList.add('form-box');
         let newLabel = document.createElement('label');
+        newLabel.setAttribute('for', this.name);
         let newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', this.name);
+        newInput.setAttribute('id', this.name);
 
-        let label1 = new FieldLabel(this.label);
-        label1.showLabel(newLabel);
+        let label = new FieldLabel(this.label);
+        label.showLabel(newLabel);
         newDiv.appendChild(newLabel);
         newDiv.appendChild(newInput);
         el.appendChild(newDiv);
 
     }
 
+    constructor(name: string, label: string){
+        this.name = name;
+        this.label = label;
+    }
+
 }
 
-// let testDiv = document.getElementById('test');
-// let testField = new InputField();
-// testField.label = 'Etykieta testowa 123'
-// testField.render(testDiv);
+
 
 
 

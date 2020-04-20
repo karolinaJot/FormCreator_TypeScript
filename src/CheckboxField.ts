@@ -1,13 +1,32 @@
 import { FieldTypes } from './FieldType';
 import { Field } from './Field';
+import { FieldLabel } from './FiledLabel';
 
-class CheckboxField implements Field{
+export class CheckboxField implements Field{
     name: string;
     label: string;
     fieldType: FieldTypes = FieldTypes.CheckBox;
     value: string;
-    render(): void {
-        console.log(this.label, this.fieldType);
+    render(el: HTMLElement): void {
+        let newDiv = document.createElement('div');
+        newDiv.classList.add('form-box');
+        let newLabel = document.createElement('label');
+        newLabel.setAttribute('for', this.name);
+        let newCheckbox = document.createElement('input');
+        newCheckbox.setAttribute('type', 'checkbox');
+        newCheckbox.setAttribute('name', this.name);
+        newCheckbox.setAttribute('id', this.name);
+        newCheckbox.setAttribute('checked', '');
+
+        let label = new FieldLabel(this.label);
+        label.showLabel(newLabel);
+        newDiv.appendChild(newLabel);
+        newDiv.appendChild(newCheckbox);
+        el.appendChild(newDiv);
+    }
+    constructor(name: string, label: string){
+        this.name = name;
+        this.label = label;
     }
 
 }
