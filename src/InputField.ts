@@ -17,12 +17,17 @@ export class InputField implements Field {
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', this.name);
         newInput.setAttribute('id', this.name);
+        newInput.addEventListener('input', function(){
+            this.value = newInput.value;
+        });
 
         let label = new FieldLabel(this.label);
         label.showLabel(newLabel);
         newDiv.appendChild(newLabel);
         newDiv.appendChild(newInput);
         el.appendChild(newDiv);
+
+
 
     }
 

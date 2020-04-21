@@ -18,6 +18,9 @@ export class EmailField implements Field{
         newInput.setAttribute('id', this.name);
         newInput.setAttribute('pattern', '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$');
         newInput.setAttribute('required', '');
+        newInput.addEventListener('input', function(){
+            this.value = newInput.value;
+        });
 
         let label = new FieldLabel(this.label);
         label.showLabel(newLabel);
