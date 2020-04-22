@@ -13,10 +13,10 @@ export class Form{
     
     constructor(){
         let pytanie1 = new InputField('Pytanie 1', 'Napisz kilka słów o sobie.');
-        let pytanie2 = new TextAreaField('Pytanie 2', 'Opisz swoją największą pasję.');
+        let pytanie2 = new TextAreaField('Pytanie 2', 'Opisz swoją największą przygodę, która Ci się przytrafiła podczas kwarantanny.');
         let pytanie3 = new CheckboxField('pytanie 3', 'Czy Twoja pralka często mówi Ci jak masz żyć?');
         let pytanie4 = new DateField('Pytanie 4', 'Od kiedy nie wychodzisz z domu? Podaj datę.');
-        let pytanie5 = new EmailField('Pytanie 5', 'Podaj swój adres email');
+        let pytanie5 = new EmailField('Pytanie 5', 'Podaj swój adres email. Z przyjemnością zasypiemy Cię milionem reklam.');
         let pytanie6 = new SelectField('Pytanie 6', 'Na kogo zagłosujesz w najbliszych wyborach prezydenckich?');
 
         this.fieldsArray.push(pytanie1);
@@ -35,9 +35,9 @@ export class Form{
             this.fieldsArray[i].render(el);
         }
     }
-    getValue(){
+    getValue(el: HTMLElement){
         for(let i = 0; i < this.fieldsArray.length; i ++){
-            console.log(this.fieldsArray[i].value)
-        }   
-    }
+            el.innerHTML = this.fieldsArray[0].value; //tutaj nie działa
+        }  
+    } 
 }

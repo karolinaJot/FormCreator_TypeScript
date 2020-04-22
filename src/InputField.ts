@@ -19,6 +19,8 @@ export class InputField implements Field {
         newInput.setAttribute('id', this.name);
         newInput.addEventListener('input', function(){
             this.value = newInput.value;
+            // tutaj działa
+            console.log(this.value);
         });
 
         let label = new FieldLabel(this.label);

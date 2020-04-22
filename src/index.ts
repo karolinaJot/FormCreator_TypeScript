@@ -7,7 +7,13 @@ let form = document.querySelector('form');
 
 let newForm = new Form();
 newForm.render(form);
-newForm.getValue();
+
+let revButton = document.getElementById('button-rev');
+let formResults = document.getElementById('result');
+revButton.addEventListener('click', function(){
+    newForm.getValue(formResults);
+});
+
 
 
 
