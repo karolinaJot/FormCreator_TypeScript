@@ -16,7 +16,7 @@ export class DateField implements Field{
         newInput.setAttribute('type', 'date');
         newInput.setAttribute('name', this.name);
         newInput.setAttribute('id', this.name);
-        newInput.addEventListener('input', function(){
+        newInput.addEventListener('input', () => {
             this.value = newInput.value;
         });
 

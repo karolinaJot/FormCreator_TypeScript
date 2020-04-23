@@ -16,7 +16,7 @@ export class TextAreaField implements Field{
         let newInput = document.createElement('textarea');
         newInput.setAttribute('name', this.name);
         newInput.setAttribute('id', this.name);
-        newInput.addEventListener('input', function(){
+        newInput.addEventListener('input', () => {
             this.value = newInput.value;
         });
 

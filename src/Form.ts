@@ -37,7 +37,7 @@ export class Form{
     }
     getValue(el: HTMLElement){
         for(let i = 0; i < this.fieldsArray.length; i ++){
-            el.innerHTML = this.fieldsArray[0].value; //tutaj nie działa
+            el.innerHTML += this.fieldsArray[i].value + "; "; 
         }  
     } 
 }

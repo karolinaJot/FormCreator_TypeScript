@@ -22,7 +22,7 @@ export class SelectField implements Field{
         option1.setAttribute('value', option1.innerHTML);
         option2.setAttribute('value', option2.innerHTML);
         option3.setAttribute('value', option3.innerHTML);
-        select.addEventListener('input', function(){
+        select.addEventListener('input', () => {
             this.value = select.value;
         });
         select.appendChild(option1);

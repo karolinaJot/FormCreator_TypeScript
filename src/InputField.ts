@@ -17,10 +17,8 @@ export class InputField implements Field {
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', this.name);
         newInput.setAttribute('id', this.name);
-        newInput.addEventListener('input', function(){
+        newInput.addEventListener('input', () => {
             this.value = newInput.value;
-            // tutaj działa
-            console.log(this.value);
         });
 
         let label = new FieldLabel(this.label);

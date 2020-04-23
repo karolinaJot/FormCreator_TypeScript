@@ -17,7 +17,7 @@ export class CheckboxField implements Field{
         newCheckbox.setAttribute('name', this.name);
         newCheckbox.setAttribute('id', this.name);
         newCheckbox.setAttribute('checked', '');
-        newCheckbox.addEventListener('input', function(){
+        newCheckbox.addEventListener('input', () => {
             this.value = newCheckbox.value;
         });
 
