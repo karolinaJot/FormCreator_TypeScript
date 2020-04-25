@@ -4,14 +4,17 @@ import { CheckboxField} from './CheckboxField';
 import { DateField } from './DateField';
 import { EmailField } from './EmailField';
 import { SelectField } from './SelectField';
+import { Heading } from './Heading';
 import { Field } from './Field';
 
 
 export class Form{
     
     fieldsArray: Field [] = [];
-    
+    heading: Heading;
+
     constructor(){
+        this.heading = new Heading('Ankieta w czasach koronawirusa.', 'Nie, to nie jest sondaż wyborczy. To zwykła ankieta. Bądź szczery i prawdziwy, jak zawsze.');
         let pytanie1 = new InputField('Pytanie 1', 'Napisz kilka słów o sobie.');
         let pytanie2 = new TextAreaField('Pytanie 2', 'Opisz swoją największą przygodę, która Ci się przytrafiła podczas kwarantanny.');
         let pytanie3 = new CheckboxField('pytanie 3', 'Czy Twoja pralka często mówi Ci jak masz żyć?');
@@ -27,10 +30,8 @@ export class Form{
         this.fieldsArray.push(pytanie6);
     }
     
-    
-    
-    
     render(el: HTMLElement){
+        this.heading.render(el);
         for(let i = 0; i < this.fieldsArray.length; i ++){
             this.fieldsArray[i].render(el);
         }
