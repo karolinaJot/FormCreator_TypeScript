@@ -4,8 +4,8 @@ class FieldLabel {
     constructor(l) {
         this.label = l;
     }
-    showLabel(el) {
-        el.innerHTML = this.label;
+    showLabel(labelEl) {
+        labelEl.innerHTML = this.label;
     }
 }
 exports.FieldLabel = FieldLabel;

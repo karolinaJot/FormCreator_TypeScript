@@ -2,7 +2,6 @@ import { FieldLabel } from './FiledLabel';
 import { FieldTypes } from './FieldType';
 import { Field } from './Field';
 
-
 export class InputField implements Field {
     name: string;
     label: string;
@@ -26,17 +25,12 @@ export class InputField implements Field {
         newDiv.appendChild(newLabel);
         newDiv.appendChild(newInput);
         el.appendChild(newDiv);
-
-
-
     }
 
     constructor(name: string, label: string){
         this.name = name;
         this.label = label;
-        
     }
-
 }
 
 
