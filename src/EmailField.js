@@ -28,6 +28,9 @@ class EmailField {
         newDiv.appendChild(newInput);
         el.appendChild(newDiv);
     }
+    getValue() {
+        return this.value;
+    }
 }
 exports.EmailField = EmailField;
 //# sourceMappingURL=EmailField.js.map

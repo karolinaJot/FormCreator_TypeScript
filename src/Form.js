@@ -29,6 +29,12 @@ class Form {
         for (let i = 0; i < this.fieldsArray.length; i++) {
             this.fieldsArray[i].render(el);
         }
+        let cancelBtn = document.createElement('button');
+        cancelBtn.innerHTML = 'Anuluj';
+        el.appendChild(cancelBtn);
+        let sendBtn = document.createElement('button');
+        sendBtn.innerHTML = 'Wyślij';
+        el.appendChild(sendBtn);
     }
     getValue(el) {
         for (let i = 0; i < this.fieldsArray.length; i++) {

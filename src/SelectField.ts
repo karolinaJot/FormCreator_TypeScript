@@ -6,7 +6,7 @@ export class SelectField implements Field{
     name: string;
     label: string;
     fieldType: FieldTypes = FieldTypes.Select;
-    value: string;
+    private value: string;
     numberOfOptions: number;
     render(el: HTMLElement): void {
         let div = document.createElement('div');
@@ -34,6 +34,10 @@ export class SelectField implements Field{
         div.appendChild(newLabel);
         div.appendChild(select);
         el.appendChild(div);
+    }
+
+    getValue(): string{
+        return this.value; 
     }
 
     constructor(name: string, label: string){

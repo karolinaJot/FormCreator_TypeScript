@@ -6,7 +6,7 @@ export class CheckboxField implements Field{
     name: string;
     label: string;
     fieldType: FieldTypes = FieldTypes.CheckBox;
-    value: string;
+    private value: string;
     render(el: HTMLElement): void {
         let newDiv = document.createElement('div');
         newDiv.classList.add('form-box');
@@ -26,6 +26,10 @@ export class CheckboxField implements Field{
         newDiv.appendChild(newLabel);
         newDiv.appendChild(newCheckbox);
         el.appendChild(newDiv);
+    }
+
+    getValue(): string{
+        return this.value; 
     }
     constructor(name: string, label: string){
         this.name = name;

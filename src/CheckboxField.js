@@ -27,6 +27,9 @@ class CheckboxField {
         newDiv.appendChild(newCheckbox);
         el.appendChild(newDiv);
     }
+    getValue() {
+        return this.value;
+    }
 }
 exports.CheckboxField = CheckboxField;
 //# sourceMappingURL=CheckboxField.js.map

@@ -26,6 +26,9 @@ class InputField {
         newDiv.appendChild(newInput);
         el.appendChild(newDiv);
     }
+    getValue() {
+        return this.value;
+    }
 }
 exports.InputField = InputField;
 //# sourceMappingURL=InputField.js.map

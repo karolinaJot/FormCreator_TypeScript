@@ -25,6 +25,9 @@ class TextAreaField {
         newDiv.appendChild(newInput);
         el.appendChild(newDiv);
     }
+    getValue() {
+        return this.value;
+    }
 }
 exports.TextAreaField = TextAreaField;
 //# sourceMappingURL=TextAreaField.js.map

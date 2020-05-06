@@ -11,4 +11,5 @@ class DocumentList {
         divList.innerHTML = this.docList.toString();
     }
 }
+exports.DocumentList = DocumentList;
 //# sourceMappingURL=DocumentList.js.map

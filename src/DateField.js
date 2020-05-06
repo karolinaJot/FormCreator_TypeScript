@@ -26,6 +26,9 @@ class DateField {
         newDiv.appendChild(newInput);
         el.appendChild(newDiv);
     }
+    getValue() {
+        return this.value;
+    }
 }
 exports.DateField = DateField;
 //# sourceMappingURL=DateField.js.map

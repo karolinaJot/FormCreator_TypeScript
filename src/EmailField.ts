@@ -6,7 +6,7 @@ export class EmailField implements Field{
     name: string;
     label: string;
     fieldType: FieldTypes = FieldTypes.EMail;
-    value: string;
+    private value: string;
     render(el: HTMLElement): void {
         let newDiv = document.createElement('div');
         newDiv.classList.add('form-box');
@@ -28,6 +28,10 @@ export class EmailField implements Field{
         newDiv.appendChild(newInput);
         el.appendChild(newDiv);
 
+    }
+
+    getValue(): string{
+        return this.value; 
     }
 
     constructor(name: string, label: string){

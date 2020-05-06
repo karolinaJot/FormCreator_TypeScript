@@ -35,10 +35,20 @@ export class Form{
         for(let i = 0; i < this.fieldsArray.length; i ++){
             this.fieldsArray[i].render(el);
         }
+
+        let divBtn = document.createElement('div');
+        divBtn.classList.add('form-box');
+        let cancelBtn = document.createElement('button');
+        cancelBtn.innerHTML = 'Wstecz';
+        divBtn.appendChild(cancelBtn);
+        let sendBtn = document.createElement('button');
+        sendBtn.innerHTML = 'Wyślij';
+        divBtn.appendChild(sendBtn);
+        el.appendChild(divBtn);
     }
     getValue(el: HTMLElement){
         for(let i = 0; i < this.fieldsArray.length; i ++){
-            el.innerHTML += this.fieldsArray[i].value + "; "; 
+            el.innerHTML += this.fieldsArray[i].value + "; ";  //value wyleciało z interfejsu, jest teraz prywatne
         }  
     } 
 }

@@ -34,6 +34,9 @@ class SelectField {
         div.appendChild(select);
         el.appendChild(div);
     }
+    getValue() {
+        return this.value;
+    }
 }
 exports.SelectField = SelectField;
 //# sourceMappingURL=SelectField.js.map
