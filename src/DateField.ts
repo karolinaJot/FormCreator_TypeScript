@@ -28,6 +28,10 @@ export class DateField implements Field{
 
     }
 
+    getValue(): string{
+        return this.value; 
+    }
+
     constructor(name: string, label: string){
         this.name = name;
         this.label = label;

@@ -7,4 +7,5 @@ export interface Field {
     value: string;
 
     render(el:HTMLElement): void; 
+    getValue(): string;
 }

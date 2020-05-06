@@ -1,6 +1,6 @@
 import { MyStorage} from './MyStorage'
 
-class LocStorage implements MyStorage{
+export class LocStorage implements MyStorage{
 
     saveDocument(el: any): string {
         let docID = Date.now().toString(); 
@@ -8,7 +8,9 @@ class LocStorage implements MyStorage{
         let docIDList = localStorage.getItem('docIDList');
         let existingDocIDList = docIDList ? docIDList.split(',') : [];
         existingDocIDList.push(`document${docID}`);
+        console.log(existingDocIDList);
         localStorage.setItem('docIDList', existingDocIDList.toString());
+        console.log(`document${docID}`);
 
         return `document${docID}`;
     }
@@ -16,12 +18,14 @@ class LocStorage implements MyStorage{
         let retrievedObject = localStorage.getItem(documentID);
         return JSON.parse(retrievedObject);
     }
+
     getDocuments(): string[] {
         let docIDList = localStorage.getItem('docIDList');
         if(!docIDList){
             console.log('Go home. There is no ID array.'); 
         }else {
             let existingDocIDList = docIDList.split(',');
+            console.log(existingDocIDList);
             return existingDocIDList;
         }
     }
