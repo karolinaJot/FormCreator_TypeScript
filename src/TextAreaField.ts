@@ -7,7 +7,8 @@ export class TextAreaField implements Field{
     name: string;
     label: string;
     fieldType: FieldTypes = FieldTypes.TextArea;
-    private value: string;
+    value: string;
+    
     render(el: HTMLElement): void {
         let newDiv = document.createElement('div');
         newDiv.classList.add('form-box');
@@ -19,8 +20,6 @@ export class TextAreaField implements Field{
         newInput.addEventListener('input', () => {
             this.value = newInput.value;
         });
-
-
         let label = new FieldLabel(this.label);
         label.showLabel(newLabel);
         newDiv.appendChild(newLabel);

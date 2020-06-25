@@ -6,7 +6,8 @@ export class CheckboxField implements Field{
     name: string;
     label: string;
     fieldType: FieldTypes = FieldTypes.CheckBox;
-    private value: string;
+    value: string;
+    
     render(el: HTMLElement): void {
         let newDiv = document.createElement('div');
         newDiv.classList.add('form-box');

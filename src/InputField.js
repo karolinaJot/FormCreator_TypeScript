@@ -8,6 +8,12 @@ class InputField {
         this.name = name;
         this.label = label;
     }
+    get value() {
+        return this._value;
+    }
+    set value(currentValue) {
+        this._value = currentValue;
+    }
     render(el) {
         let newDiv = document.createElement('div');
         newDiv.classList.add('form-box');

@@ -6,7 +6,8 @@ export class EmailField implements Field{
     name: string;
     label: string;
     fieldType: FieldTypes = FieldTypes.EMail;
-    private value: string;
+    value: string;
+    
     render(el: HTMLElement): void {
         let newDiv = document.createElement('div');
         newDiv.classList.add('form-box');

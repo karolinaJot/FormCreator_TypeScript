@@ -7,6 +7,7 @@ const DateField_1 = require("./DateField");
 const EmailField_1 = require("./EmailField");
 const SelectField_1 = require("./SelectField");
 const Heading_1 = require("./Heading");
+const LocStorage_1 = require("./LocStorage");
 class Form {
     constructor() {
         this.fieldsArray = [];
@@ -24,17 +25,32 @@ class Form {
         this.fieldsArray.push(pytanie5);
         this.fieldsArray.push(pytanie6);
     }
+    save() {
+        let locStorage = new LocStorage_1.LocStorage();
+        let docID = locStorage.saveDocument(this);
+        return docID;
+    }
+    goURL() {
+        window.location.href = 'index.html';
+    }
     render(el) {
         this.heading.render(el);
         for (let i = 0; i < this.fieldsArray.length; i++) {
             this.fieldsArray[i].render(el);
         }
+        let divBtn = document.createElement('div');
+        divBtn.classList.add('form-box');
         let cancelBtn = document.createElement('button');
-        cancelBtn.innerHTML = 'Anuluj';
-        el.appendChild(cancelBtn);
+        cancelBtn.innerHTML = 'Wstecz';
+        divBtn.appendChild(cancelBtn);
         let sendBtn = document.createElement('button');
-        sendBtn.innerHTML = 'Wyślij';
-        el.appendChild(sendBtn);
+        sendBtn.innerHTML = 'Zapisz';
+        sendBtn.addEventListener('click', () => {
+            this.save();
+            this.goURL();
+        });
+        divBtn.appendChild(sendBtn);
+        el.appendChild(divBtn);
     }
     getValue(el) {
         for (let i = 0; i < this.fieldsArray.length; i++) {

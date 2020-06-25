@@ -6,7 +6,9 @@ export class InputField implements Field {
     name: string;
     label: string;
     fieldType: FieldTypes = FieldTypes.TextBox;
-    private value: string;
+    value: string;
+   
+    
     render(el: HTMLElement): void {
         let newDiv = document.createElement('div');
         newDiv.classList.add('form-box');

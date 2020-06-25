@@ -6,6 +6,7 @@ import { EmailField } from './EmailField';
 import { SelectField } from './SelectField';
 import { Heading } from './Heading';
 import { Field } from './Field';
+import { LocStorage } from './LocStorage';
 
 
 export class Form{
@@ -29,6 +30,15 @@ export class Form{
         this.fieldsArray.push(pytanie5);
         this.fieldsArray.push(pytanie6);
     }
+
+    save(): string{
+        let locStorage = new LocStorage();
+        let docID: string = locStorage.saveDocument(this);
+        return docID;
+    }
+    private goURL(){
+        window.location.href = 'index.html';
+    }
     
     render(el: HTMLElement){
         this.heading.render(el);
@@ -40,9 +50,14 @@ export class Form{
         divBtn.classList.add('form-box');
         let cancelBtn = document.createElement('button');
         cancelBtn.innerHTML = 'Wstecz';
+        
         divBtn.appendChild(cancelBtn);
         let sendBtn = document.createElement('button');
-        sendBtn.innerHTML = 'Wyślij';
+        sendBtn.innerHTML = 'Zapisz';
+        sendBtn.addEventListener('click', () => {
+            this.save();
+            this.goURL();
+        })
         divBtn.appendChild(sendBtn);
         el.appendChild(divBtn);
     }

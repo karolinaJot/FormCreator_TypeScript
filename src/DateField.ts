@@ -6,7 +6,8 @@ export class DateField implements Field{
     name: string;
     label: string;
     fieldType: FieldTypes = FieldTypes.Date;
-    private value: string;
+    value: string;
+    
     render(el: HTMLElement): void {
         let newDiv = document.createElement('div');
         newDiv.classList.add('form-box');

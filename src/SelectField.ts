@@ -6,7 +6,8 @@ export class SelectField implements Field{
     name: string;
     label: string;
     fieldType: FieldTypes = FieldTypes.Select;
-    private value: string;
+    value: string;
+    
     numberOfOptions: number;
     render(el: HTMLElement): void {
         let div = document.createElement('div');
