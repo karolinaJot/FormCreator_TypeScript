@@ -50,8 +50,11 @@ export class Form{
         divBtn.classList.add('form-box');
         let cancelBtn = document.createElement('button');
         cancelBtn.innerHTML = 'Wstecz';
-        
+        cancelBtn.addEventListener('click', () =>{
+            this.goURL();
+        });
         divBtn.appendChild(cancelBtn);
+
         let sendBtn = document.createElement('button');
         sendBtn.innerHTML = 'Zapisz';
         sendBtn.addEventListener('click', () => {
@@ -63,7 +66,7 @@ export class Form{
     }
     getValue(el: HTMLElement){
         for(let i = 0; i < this.fieldsArray.length; i ++){
-            el.innerHTML += this.fieldsArray[i].value + "; ";  //value wyleciało z interfejsu, jest teraz prywatne
+            el.innerHTML += this.fieldsArray[i].value + "; ";  
         }  
     } 
 }
