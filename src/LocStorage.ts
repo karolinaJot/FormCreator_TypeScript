@@ -2,29 +2,33 @@ import { MyStorage} from './MyStorage'
 
 export class LocStorage implements MyStorage{
 
+    clearLocalStorage(): void {
+        localStorage.clear();
+    } 
+    
     saveDocument(el: any): string {
-        let docID = Date.now().toString(); 
-        localStorage.setItem(`document${docID}`, JSON.stringify(el));
-        let docIDList = localStorage.getItem('docIDList');
-        let existingDocIDList = docIDList ? docIDList.split(',') : [];
-        existingDocIDList.push(`document${docID}`);
+        let timeStamp: string = Date.now().toString(); 
+        localStorage.setItem(`document${timeStamp}`, JSON.stringify(el));
+        let docIDList: string = localStorage.getItem('docIDList');
+        let existingDocIDList: string[] = docIDList ? docIDList.split(',') : [];
+        existingDocIDList.push(`document${timeStamp}`);
         // console.log(existingDocIDList);
         localStorage.setItem('docIDList', existingDocIDList.toString());
-        // console.log(`document${docID}`);
+        console.log(existingDocIDList.toString());
 
-        return `document${docID}`;
+        return `document${timeStamp}`;
     }
     loadDocument(documentID: string): any {
-        let retrievedObject = localStorage.getItem(documentID);
+        let retrievedObject: string = localStorage.getItem(documentID);
         return JSON.parse(retrievedObject);
     }
 
     getDocuments(): string[] {
-        let docIDList = localStorage.getItem('docIDList');
+        let docIDList: string = localStorage.getItem('docIDList');
         if(!docIDList){
             console.log('Go home. There is no ID array.'); 
         }else {
-            let existingDocIDList = docIDList.split(',');
+            let existingDocIDList: string[] = docIDList.split(',');
             // console.log(existingDocIDList);
             return existingDocIDList;
         }

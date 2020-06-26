@@ -34,6 +34,7 @@ export class Form{
     save(): string{
         let locStorage = new LocStorage();
         let docID: string = locStorage.saveDocument(this);
+        console.log(locStorage.getDocuments());
         return docID;
     }
     private goURL(){
