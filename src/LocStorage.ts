@@ -12,7 +12,6 @@ export class LocStorage implements MyStorage{
         let docIDList: string = localStorage.getItem('docIDList');
         let existingDocIDList: string[] = docIDList ? docIDList.split(',') : [];
         existingDocIDList.push(`document${timeStamp}`);
-        // console.log(existingDocIDList);
         localStorage.setItem('docIDList', existingDocIDList.toString());
         console.log(existingDocIDList.toString());
 
@@ -29,7 +28,6 @@ export class LocStorage implements MyStorage{
             console.log('Go home. There is no ID array.'); 
         }else {
             let existingDocIDList: string[] = docIDList.split(',');
-            // console.log(existingDocIDList);
             return existingDocIDList;
         }
     }

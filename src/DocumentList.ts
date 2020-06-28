@@ -9,10 +9,17 @@ export class DocumentList {
     }
 
     render(): void {
-        let divList = document.getElementById('ID-list');
-        // divList.classList.add('list-table');  !!!!! dodać style!!!
-        divList.innerHTML = this.docList.toString();  // dodać sposób wyśtwietlania
-        
+        let docListContainer = document.getElementById('doc_list');
+        if(docListContainer){
+            let list: HTMLElement = document.createElement('ul');
+            for(let i = 0; i < this.docList.length; i ++){
+                let listItem: HTMLElement = document.createElement('li');
+                listItem.innerHTML = this.docList[i];
+                list.appendChild(listItem); 
+            }
+            docListContainer.appendChild(list);
+        }
+       
     }
 
 
