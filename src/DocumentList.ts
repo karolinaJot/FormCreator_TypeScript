@@ -1,4 +1,5 @@
 import { LocStorage } from './LocStorage'
+import { Router } from './Router'
 
 export class DocumentList {
     docList: string[];
@@ -7,7 +8,8 @@ export class DocumentList {
         let IDList = new LocStorage();
         this.docList = IDList.getDocuments();
     }
-    removeFromLocalStorage(docName: string):void{
+    private goURL(docID:string):void{
+        window.location.href = `edit-document.html?id=${docID}`;
 
     }
 
@@ -25,6 +27,9 @@ export class DocumentList {
                 spanItem1.innerHTML = 'Edytuj';
                 spanItem1.addEventListener('click', () => {
                         console.log('edytuj' + docID);
+                        this.goURL(docID);
+                        
+
                         // 
                         //tutaj dodać kod kótry przekierowuje na nową stronę z opcją edycji
                         //

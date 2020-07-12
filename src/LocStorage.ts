@@ -1,4 +1,6 @@
 import { MyStorage} from './MyStorage'
+import { Form } from './Form'
+import { Field } from './Field'
 
 export class LocStorage implements MyStorage{
 
@@ -19,7 +21,11 @@ export class LocStorage implements MyStorage{
     }
     loadDocument(documentID: string): any {
         let retrievedObject: string = localStorage.getItem(documentID);
-        return JSON.parse(retrievedObject);
+        let retrievedDoc: string =  JSON.parse(retrievedObject);
+
+        let newForm: Form = new Form();
+        newForm.parse(JSON.parse(retrievedObject) as string);
+        return newForm;
     }
 
     getDocuments(): string[] {

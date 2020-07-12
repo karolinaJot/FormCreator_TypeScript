@@ -1,20 +1,21 @@
 import { InputField } from './InputField';
 import { TextAreaField } from './TextAreaField';
-import { CheckboxField} from './CheckboxField';
+import { CheckboxField } from './CheckboxField';
 import { DateField } from './DateField';
 import { EmailField } from './EmailField';
 import { SelectField } from './SelectField';
 import { Heading } from './Heading';
 import { Field } from './Field';
 import { LocStorage } from './LocStorage';
+import { FieldTypes } from './FieldType';
 
 
-export class Form{
-    
-    fieldsArray: Field [] = [];
+export class Form {
+
+    fieldsArray: Field[] = [];
     heading: Heading;
 
-    constructor(){
+    constructor() {
         this.heading = new Heading('Ankieta w czasach koronawirusa.', 'Nie, to nie jest sondaż wyborczy. To zwykła ankieta. Bądź szczery i prawdziwy, jak zawsze.');
         let pytanie1 = new InputField('Pytanie 1', 'Napisz kilka słów o sobie.');
         let pytanie2 = new TextAreaField('Pytanie 2', 'Opisz swoją największą przygodę, która Ci się przytrafiła podczas kwarantanny.');
@@ -31,19 +32,19 @@ export class Form{
         this.fieldsArray.push(pytanie6);
     }
 
-    save(): string{
+    save(): string {
         let locStorage = new LocStorage();
         let docID: string = locStorage.saveDocument(this);
         console.log(locStorage.getDocuments());
         return docID;
     }
-    private goURL(){
+    private goURL() {
         window.location.href = 'index.html';
     }
-    
-    render(el: HTMLElement){
+
+    render(el: HTMLElement) {
         this.heading.render(el);
-        for(let i = 0; i < this.fieldsArray.length; i ++){
+        for (let i = 0; i < this.fieldsArray.length; i++) {
             this.fieldsArray[i].render(el);
         }
 
@@ -51,7 +52,7 @@ export class Form{
         divBtn.classList.add('form-box');
         let cancelBtn = document.createElement('button');
         cancelBtn.innerHTML = 'Wstecz';
-        cancelBtn.addEventListener('click', () =>{
+        cancelBtn.addEventListener('click', () => {
             this.goURL();
         });
         divBtn.appendChild(cancelBtn);
@@ -65,9 +66,67 @@ export class Form{
         divBtn.appendChild(sendBtn);
         el.appendChild(divBtn);
     }
-    getValue(el: HTMLElement){
-        for(let i = 0; i < this.fieldsArray.length; i ++){
-            el.innerHTML += this.fieldsArray[i].value + "; ";  
-        }  
-    } 
+    getValue(el: HTMLElement) {
+        for (let i = 0; i < this.fieldsArray.length; i++) {
+            el.innerHTML += this.fieldsArray[i].value + "; ";
+        }
+    }
+
+    parse(json: string): void {
+        Object.assign(this, json);
+
+
+        let heading: Heading = new Heading("", "");
+        let headingPrototype = Object.create(Heading.prototype);
+        Object.assign(headingPrototype, this.heading);
+        heading.descriptionText = this.heading.descriptionText;
+        heading.titleText = this.heading.titleText;
+        this.heading = heading;
+
+
+        for (let i = 0; i < this.fieldsArray.length; i++) {
+            switch (this.fieldsArray[i].fieldType) {
+                case FieldTypes.TextBox: {
+                    let field = Object.create(InputField.prototype)
+                    Object.assign(field, this.fieldsArray[i]);
+                    this.fieldsArray[i] = field;
+                    break;
+                }
+                case FieldTypes.TextArea: {
+                    let field = Object.create(TextAreaField.prototype)
+                    Object.assign(field, this.fieldsArray[i]);
+                    this.fieldsArray[i] = field;
+                    break;
+                }
+                case FieldTypes.CheckBox: {
+                    let field = Object.create(CheckboxField.prototype)
+                    Object.assign(field, this.fieldsArray[i]);
+                    this.fieldsArray[i] = field;
+                    break;
+                }
+                case FieldTypes.EMail: {
+                    let field = Object.create(EmailField.prototype)
+                    Object.assign(field, this.fieldsArray[i]);
+                    this.fieldsArray[i] = field;
+                    break;
+                }
+                case FieldTypes.Date: {
+                    let field = Object.create(DateField.prototype)
+                    Object.assign(field, this.fieldsArray[i]);
+                    this.fieldsArray[i] = field;
+                    break;
+                }
+                case FieldTypes.Select: {
+                    let field = Object.create(SelectField.prototype)
+                    Object.assign(field, this.fieldsArray[i]);
+                    this.fieldsArray[i] = field;
+                    break;
+                }
+                default:{
+                    console.log('Problem with parse function');
+                    break;
+                }
+            }
+        }
+    }
 }
