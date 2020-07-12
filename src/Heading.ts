@@ -18,4 +18,9 @@ export class Heading{
         el.appendChild(this.titleConteiner);
         el.appendChild(this.descriptionConteiner);
     }
+
+    showHeading(title: string, description: string):void {
+        this.titleConteiner.innerHTML = this.titleText;
+        this.descriptionConteiner.innerHTML = this.descriptionText;
+    }
 }

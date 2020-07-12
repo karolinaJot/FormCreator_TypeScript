@@ -18,15 +18,26 @@ export class InputField implements Field {
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', this.name);
         newInput.setAttribute('id', this.name);
+        
         newInput.addEventListener('input', () => {
             this.value = newInput.value;
         });
 
+        if(this.value){
+            newInput.value = this.value;
+        }
+       
+
         let label = new FieldLabel(this.label);
         label.showLabel(newLabel);
+        
         newDiv.appendChild(newLabel);
         newDiv.appendChild(newInput);
         el.appendChild(newDiv);
+    }
+
+    showAnswer(el: HTMLElement, a: string): void{
+
     }
 
     getValue(): string{

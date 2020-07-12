@@ -21,7 +21,7 @@ export class LocStorage implements MyStorage{
     }
     loadDocument(documentID: string): any {
         let retrievedObject: string = localStorage.getItem(documentID);
-        let retrievedDoc: string =  JSON.parse(retrievedObject);
+        // let retrievedDoc: string =  JSON.parse(retrievedObject);
 
         let newForm: Form = new Form();
         newForm.parse(JSON.parse(retrievedObject) as string);
@@ -36,6 +36,23 @@ export class LocStorage implements MyStorage{
             let existingDocIDList: string[] = docIDList.split(',');
             return existingDocIDList;
         }
+    }
+
+    removeDocument(documentID: string){
+        localStorage.removeItem(documentID);
+        // usuwanie ID dokumentu z docIDList
+        let docIDList = this.getDocuments();
+
+        for(let i = 0; i < docIDList.length; i++)
+        {
+            if(docIDList[i] === documentID)
+            {
+               docIDList.splice(i,1);
+               break;
+            }
+                
+        }
+        localStorage.setItem('docIDList', docIDList.toString());
     }
 
 }

@@ -22,6 +22,10 @@ export class CheckboxField implements Field{
             this.value = newCheckbox.value;
         });
 
+        if(this.value){
+            newCheckbox.value = this.value;
+        }
+
         let label = new FieldLabel(this.label);
         label.showLabel(newLabel);
         newDiv.appendChild(newLabel);

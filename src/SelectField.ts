@@ -26,6 +26,10 @@ export class SelectField implements Field{
         select.addEventListener('input', () => {
             this.value = select.value;
         });
+
+        if(this.value){
+            select.value = this.value;
+        }
         select.appendChild(option1);
         select.appendChild(option2);
         select.appendChild(option3);

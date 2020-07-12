@@ -23,6 +23,10 @@ export class EmailField implements Field{
             this.value = newInput.value;
         });
 
+        if(this.value){
+            newInput.value = this.value;
+        }
+
         let label = new FieldLabel(this.label);
         label.showLabel(newLabel);
         newDiv.appendChild(newLabel);

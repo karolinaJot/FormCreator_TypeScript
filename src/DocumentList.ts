@@ -28,11 +28,6 @@ export class DocumentList {
                 spanItem1.addEventListener('click', () => {
                         console.log('edytuj' + docID);
                         this.goURL(docID);
-                        
-
-                        // 
-                        //tutaj dodać kod kótry przekierowuje na nową stronę z opcją edycji
-                        //
                 });
                 listItem.appendChild(spanItem1);
 
@@ -40,11 +35,10 @@ export class DocumentList {
                 spanItem2.classList.add('list_item__delete_doc');
                 spanItem2.innerHTML = 'Usuń';
                 spanItem2.addEventListener('click', () => {
-                    // usuwanie dokumentu z localStorage
-                    localStorage.removeItem(docID);
-                    // usuwanie ID dokumentu z docIDList
-                    this.docList.splice(i,1);
-                    localStorage.setItem('docIDList', this.docList.toString());
+                    let locStorage = new LocStorage();
+                    locStorage.removeDocument(docID);
+                    this.docList = locStorage.getDocuments();
+
                     spanItem2.parentElement.parentElement.removeChild(listItem)
                 });
                 listItem.appendChild(spanItem2);

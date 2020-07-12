@@ -20,6 +20,10 @@ export class TextAreaField implements Field{
         newInput.addEventListener('input', () => {
             this.value = newInput.value;
         });
+
+        if(this.value){
+            newInput.value = this.value;
+        }        
         let label = new FieldLabel(this.label);
         label.showLabel(newLabel);
         newDiv.appendChild(newLabel);

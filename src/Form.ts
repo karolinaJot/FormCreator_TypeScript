@@ -14,6 +14,7 @@ export class Form {
 
     fieldsArray: Field[] = [];
     heading: Heading;
+    docId:string; 
 
     constructor() {
         this.heading = new Heading('Ankieta w czasach koronawirusa.', 'Nie, to nie jest sondaż wyborczy. To zwykła ankieta. Bądź szczery i prawdziwy, jak zawsze.');
@@ -34,9 +35,11 @@ export class Form {
 
     save(): string {
         let locStorage = new LocStorage();
-        let docID: string = locStorage.saveDocument(this);
-        console.log(locStorage.getDocuments());
-        return docID;
+        let newDocID: string = locStorage.saveDocument(this);
+        if(this.docId){
+           locStorage.removeDocument(this.docId);
+        }
+        return newDocID;
     }
     private goURL() {
         window.location.href = 'index.html';
@@ -81,6 +84,8 @@ export class Form {
         Object.assign(headingPrototype, this.heading);
         heading.descriptionText = this.heading.descriptionText;
         heading.titleText = this.heading.titleText;
+        heading.descriptionConteiner.innerHTML = this.heading.descriptionText;
+        heading.titleConteiner.innerHTML = this.heading.titleText;
         this.heading = heading;
 
 

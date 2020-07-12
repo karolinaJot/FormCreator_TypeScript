@@ -28,10 +28,7 @@ export class App {
             console.log(docToEditID);
             let locStorage: LocStorage = new LocStorage();
             let docToEdit: Form = locStorage.loadDocument(docToEditID);
-            console.log(docToEdit);
-
-            let newForm = new Form();
-            console.log(newForm);
+            docToEdit.docId = docToEditID;
 
             docToEdit.render(this.form);
         }
